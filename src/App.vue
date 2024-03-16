@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import HomeSection from "./components/HomeSection.vue";
+import GitHubIcon from "./assets/github.svg";
+import LinkedInIcon from "./assets/linkedin.svg";
 
 // data
 const selected = ref(0);
-const navigationItems = ["HOME", "ABOUT", "CONTACT"];
+const navigationItems = ["ABOUT", "EXPERIENCE", "PROJECTS"];
 
 // methods
 const selectNavItem = (index: number) => {
@@ -32,13 +34,32 @@ const selectNavItem = (index: number) => {
     <main>
       <HomeSection />
     </main>
-    <footer>f</footer>
+    <footer>
+      <div class="icons">
+        <a
+          href="https://github.com/kenjiwilkins"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img :src="GitHubIcon" alt="GitHub" />
+          <span class="sr-only">GitHub</span>
+        </a>
+        <a
+          href="https://www.linkedin.com/in/michael-kenji-wilkins-2a7a8a155/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img :src="LinkedInIcon" alt="LinkedIn" />
+          <span class="sr-only">LinkedIn</span>
+        </a>
+      </div>
+    </footer>
   </div>
 </template>
 
 <style scoped lang="scss">
 .container {
-  font-family: sans-serif;
+  color: #3b3b3b;
   height: 100vh;
   width: 100vw;
   position: relative;
@@ -93,16 +114,33 @@ const selectNavItem = (index: number) => {
 
 header {
   position: fixed;
-  top: 50%;
+  top: 20%;
   transform: translateY(-50%);
   left: 0;
 }
 main {
+  width: 100%;
+  height: 100%;
 }
 footer {
   position: fixed;
   bottom: 0;
   left: 0;
+  padding: 48px 24px;
+  .icons {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    a {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      img {
+        width: 24px;
+        height: 24px;
+      }
+    }
+  }
 }
 
 @keyframes selectBar {
@@ -112,5 +150,15 @@ footer {
   80% {
     padding-right: 8px;
   }
+}
+
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
 }
 </style>

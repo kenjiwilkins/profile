@@ -3,6 +3,7 @@ import { ref, onMounted } from "vue";
 
 // data
 const loadingProgress = ref(0);
+const name = ref(["Michael", "Kenji", "Wilkins"]);
 
 // lifecycle
 onMounted(() => {
@@ -24,8 +25,23 @@ onMounted(() => {
     </Transition>
     <Transition>
       <div v-if="loadingProgress >= 100" class="home-body">
-        <h1>Home Section</h1>
-        <h2>Some content</h2>
+        <div class="home-section-container">
+          <div class="names">
+            <h1>
+              <span v-for="n in name" :key="n">{{ n }}</span>
+            </h1>
+            <h2>
+              <span>Frontend Developer</span>
+            </h2>
+          </div>
+        </div>
+        <div class="home-section-container">
+          <h1>About Section</h1>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
+            tincidunt, nunc nec aliquam lacinia, nunc nunc lacinia.
+          </p>
+        </div>
       </div>
     </Transition>
   </div>
@@ -44,7 +60,7 @@ onMounted(() => {
 .loading {
   width: 15vw;
   height: 1px;
-  background-color: grey;
+  background-color: #3b3b3b;
   position: relative;
   .progress {
     position: absolute;
@@ -56,12 +72,28 @@ onMounted(() => {
 }
 
 .home-body {
+  box-sizing: border-box;
   width: 100%;
   height: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  background-color: red;
+  padding: 0 24px;
+  .home-section-container {
+    width: 50%;
+    display: inline-block;
+    padding: 16px;
+
+    .names {
+      position: relative;
+      height: 100%;
+      font-size: 48px;
+      h1 {
+        display: flex;
+        gap: 8px;
+      }
+    }
+  }
 }
 
 .v-leave-active,
