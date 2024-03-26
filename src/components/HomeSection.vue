@@ -36,10 +36,16 @@ onMounted(() => {
           </div>
         </div>
         <div class="home-section-container">
-          <h1>About Section</h1>
+          <h1 class="profile">Profile</h1>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
-            tincidunt, nunc nec aliquam lacinia, nunc nunc lacinia.
+            Dedicated Frontend Developer with 4 years of experience in
+            implementing user interfaces. Proficient in writing CI/CD pipelines
+            to ensure code security and maintainability. Capable of seamlessly
+            integrating frontend and backend technologies to deliver robust web
+            applications. Seeking to leverage technical skills and creative
+            abilities to contribute effectively to a dynamic team. Eager to
+            apply expertise in modern frontend libraries in a collaborative team
+            environment<span class="blink">_</span>
           </p>
         </div>
       </div>
@@ -83,7 +89,10 @@ onMounted(() => {
     width: 50%;
     display: inline-block;
     padding: 16px;
-
+    transition: scale 0.5s ease-in-out;
+    &:hover {
+      scale: 1.05;
+    }
     .names {
       position: relative;
       height: 100%;
@@ -93,6 +102,34 @@ onMounted(() => {
         gap: 8px;
       }
     }
+  }
+}
+
+.blink {
+  animation: blink 1s infinite;
+}
+
+@keyframes floating {
+  0% {
+    transform: scale(1, 1);
+  }
+  50% {
+    transform: scale(1.05, 1.05);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}
+
+@keyframes blink {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
   }
 }
 
